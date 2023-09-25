@@ -6,8 +6,19 @@ import os
 
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
+from PIL import Image, ImageFile
 
-NUM_WORKERS = os.cpu_count()
+NUM_WORKERS = 0 #Windows works better with 0
+
+
+def check_Image(path):
+  try:
+    im = Image.open(path)
+    return True
+  except:    
+    print("The image is truncated or of an unsupported format.")
+    return False
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def create_dataloaders(
     train_dir: str, 
@@ -40,8 +51,8 @@ def create_dataloaders(
                              num_workers=4)
   """
   # Use ImageFolder to create dataset(s)
-  train_data = datasets.ImageFolder(train_dir, transform=transform)
-  test_data = datasets.ImageFolder(test_dir, transform=transform)
+  train_data = datasets.ImageFolder(train_dir, transform=transform,is_valid_file=check_Image)
+  test_data = datasets.ImageFolder(test_dir, transform=transform,is_valid_file=check_Image)
 
   # Get class names
   class_names = train_data.classes

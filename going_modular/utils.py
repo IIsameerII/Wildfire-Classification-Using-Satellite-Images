@@ -33,3 +33,19 @@ def save_model(model: torch.nn.Module,
     print(f"[INFO] Saving model to: {model_save_path}")
     torch.save(obj=model.state_dict(),
              f=model_save_path)
+
+def load_model(model, weights_path):
+    """Loads a PyTorch model from a target directory.
+
+    Args:
+    model: A target PyTorch model to save.
+    weights_path: A directory for saving the model to.
+    
+    Example usage:
+    save_model(model=model_0,
+               target_dir=Path(r"model/EffNetB0.pt"),
+               )
+    """
+
+    model.load_state_dict(torch.load(weights_path))
+    return model
