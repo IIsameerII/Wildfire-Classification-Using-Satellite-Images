@@ -32,7 +32,7 @@ model_loaded.classifier = nn.Sequential(
     nn.Dropout(p=0.2, inplace=True),
     nn.Linear(in_features=1280, out_features=2)).to(device) # Hardcoded the class names
 
-model_loaded = load_model(model_loaded, Path(r"model\EfficientNet_b0-Wildfire_Classifier.pt"))
+model_loaded = load_model(model_loaded, Path(r"./model/EfficientNet_b0-Wildfire_Classifier.pt"))
 
 weights = torchvision.models.EfficientNet_B0_Weights.DEFAULT # "DEFAULT" = best available
 
