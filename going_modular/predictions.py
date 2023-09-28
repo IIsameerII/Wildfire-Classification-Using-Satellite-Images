@@ -81,4 +81,46 @@ def pred_and_plot_image(
     )
     plt.axis(False)
 
+def predict_single_image(image):
+
+    # Classnames for our repository
+    class_names = ['No Wildfire','Wildfire']
+
+    # Initialize Model
+    model_loaded = torchvision.models.efficientnet_b0().to(device)
+    model_loaded.eval()
+
+    model_loaded.classifier = nn.Sequential(
+        nn.Dropout(p=0.2, inplace=True),
+        nn.Linear(in_features=1280, out_features=2)).to(device) # Hardcoded the class names
+
+    model_loaded = load_model(model_loaded, Path(r"model\EfficientNet_b0-Wildfire_Classifier.pt"))
+
+    weights = torchvision.models.EfficientNet_B0_Weights.DEFAULT # "DEFAULT" = best available
+
+    # Get transforms from weights (these are the transforms used to train a particular or obtain a particular set of weights)
+    automatic_transforms = weights.transforms()
+
+    # Transfrom the image
+    transformed_image = automatic_transforms(image)
+
+    # Unsqueeze the image
+    pred_image = torch.unsqueeze(transformed_image,dim=0)
+    pred_image = pred_image.to(device)
+
+    # For debugging and understanding
+    # st.info(image_unsqueeze.shape)
+    with torch.inference_mode():
+        # Get logits for forward pass
+        y_logits = model_loaded(pred_image)
+
+        # Get pred
+        y_pred_prob = torch.argmax(y_logits,dim=1).item()
+
+    return class_names[y_pred_prob]
+
+
+
+    
+
 
