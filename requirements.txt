@@ -1,5 +1,5 @@
-torch==2.0.1
-torchvision==0.15.2+cpu
+torch==1.12.1
+torchvision==0.13.1
 torchinfo==1.8.1
 pathlib
 tqdm
