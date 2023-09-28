@@ -46,6 +46,6 @@ def load_model(model, weights_path):
                target_dir=Path(r"model/EffNetB0.pt"),
                )
     """
-    device = 'cuda' if torch.cuda.is_available else 'cpu'
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
     model.load_state_dict(torch.load(weights_path,map_location=device))
     return model
