@@ -10,7 +10,7 @@ st.title('Use Validation Images for Prediction')
 st.write('Running the model is very simple! Adjust the slider to get the predictions you want and then click "Run Prediciton".')
 
 # Create a dataset
-valid_dir = Path(r'validation_dataset\valid')
+valid_dir = Path(r'./validation_dataset/valid')
 
 # This function will create a dataset
 valid_dataset = create_dataset_valid(valid_dir)
