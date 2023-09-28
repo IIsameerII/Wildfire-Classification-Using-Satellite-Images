@@ -74,3 +74,10 @@ def create_dataloaders(
   )
 
   return train_dataloader, test_dataloader, class_names
+
+def create_dataset_valid(path):
+  valid_dataset = datasets.ImageFolder(path)
+  # Not transfroming here. It will be transformed when the image is fed
+  # to the prediciton function (single image). This was done to maintain consistency
+
+  return valid_dataset

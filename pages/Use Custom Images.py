@@ -1,12 +1,9 @@
 import streamlit as st
 from PIL import Image
 import torch
-from torch import nn
-import torchvision
-from going_modular.utils import load_model
-from pathlib import Path
-from going_modular import data_setup, engine, predictions
+from going_modular.predictions import predict_single_image
 
+st.set_page_config(page_title='Use Custom Images')
 st.title("Use Custom Images for Wildfire Classification")
 
 # Guidance on how to use the Demo.
@@ -32,5 +29,8 @@ if image!=None:
     # Display the image
     st.image(image)
 
-    going_
+    # Send the image for prediction
+    predicted_class = predict_single_image(image)
+
+    st.info(f'Predicted Class: {predicted_class}')
 
