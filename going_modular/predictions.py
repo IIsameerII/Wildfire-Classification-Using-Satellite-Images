@@ -81,3 +81,4 @@ def pred_and_plot_image(
     )
     plt.axis(False)
 
+
