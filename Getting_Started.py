@@ -8,5 +8,5 @@ st.markdown('<div style="text-align: justify;">Wildfires are a devastating natur
 st.write('')
 st.markdown('<div style="text-align: justify;">In conclusion, the project of wildfire classification using satellite images is of paramount importance due to its potential to enhance early detection, situational awareness, prediction, and environmental monitoring of wildfires. The benefits it offers, including improved public safety, cost reduction, scalability, and global coverage, make it a valuable tool in the fight against wildfires. Moreover, this project aligns with broader efforts to address the increasing challenges posed by climate change and its impacts on wildfire activity. By harnessing the power of satellite technology, we can take significant steps toward mitigating the devastating effects of wildfires and protecting both human communities and the environment.</div>', unsafe_allow_html=True)
 st.write('')
-img = Image.open(r'images\forest_fires.jpg')
+img = Image.open(r'Wildfire-Classification\images\forest_fires.jpg')
 st.image(img)
