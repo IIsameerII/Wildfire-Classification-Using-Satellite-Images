@@ -20,5 +20,5 @@ st.write('')
 # st.write('You selected `%s`' % filename)
 # st.write('')
 
-img = Image.open('.\images\\forest_fires.jpg')
+img = Image.open('./images//forest_fires.jpg')
 st.image(img)
