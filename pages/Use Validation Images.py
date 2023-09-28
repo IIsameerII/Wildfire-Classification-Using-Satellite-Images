@@ -9,6 +9,11 @@ st.title('Use Validation Images for Prediction')
 
 st.write('Running the model is very simple! Adjust the slider to get the predictions you want and then click "Run Prediciton".')
 
+# Get Device
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+st.warning(f'Prediction will run on {device.upper()}')
+
+
 # Create a dataset
 valid_dir = Path(r'./validation_dataset/valid')
 
@@ -19,15 +24,15 @@ num_images = int(st.slider(label='Number of Predictions',min_value=1,max_value=1
 
 # This button will check it is pressed then start what is in the loop
 if st.button(label='Run Prediction',use_container_width=True):
-    for image in range(0,num_images):
-        rand_idx = torch.randint(low=0,high=len(valid_dataset),size=[1,1]).item()
-        X,y = valid_dataset[rand_idx]
+    with st.spinner("Prediction Running...Please Wait.."):
+        for image in range(0,num_images):
+            rand_idx = torch.randint(low=0,high=len(valid_dataset),size=[1,1]).item()
+            X,y = valid_dataset[rand_idx]
 
-        st.image(X)
-        
-        pred_class = predict_single_image(X,y)
-        if pred_class[1] == True:
-            st.success(f'Predicted Class: "{pred_class[0]}" is True!')
-        else:
-            st.error(f'Predicted Class: "{pred_class[0]}" is False.')
-    
+            st.image(X)
+            
+            pred_class = predict_single_image(X,y)
+            if pred_class[1] == True:
+                st.success(f'Predicted Class: "{pred_class[0]}" is True!')
+            else:
+                st.error(f'Predicted Class: "{pred_class[0]}" is False.')

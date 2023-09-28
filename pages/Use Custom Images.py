@@ -21,16 +21,17 @@ st.warning(f'Prediction will run on {device.upper()}')
 image = st.file_uploader(label='Upload a sattelite image',
                  accept_multiple_files=False)
 
-if image!=None:
+with st.spinner("Prediction Running...Please Wait.."):
+    if image!=None:
 
-    # Open the image
-    image = Image.open(image).convert('RGB')
+        # Open the image
+        image = Image.open(image).convert('RGB')
 
-    # Display the image
-    st.image(image)
+        # Display the image
+        st.image(image)
 
-    # Send the image for prediction
-    predicted_class = predict_single_image(image)
+        # Send the image for prediction
+        predicted_class = predict_single_image(image)
 
-    st.info(f'Predicted Class: {predicted_class}')
+        st.info(f'Predicted Class: {predicted_class}')
 
