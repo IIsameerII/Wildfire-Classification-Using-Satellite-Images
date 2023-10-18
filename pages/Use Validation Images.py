@@ -4,6 +4,10 @@ import torch
 from going_modular.data_setup import create_dataset_valid
 from going_modular.predictions import predict_single_image
 
+# Classnames on which the model is trained on
+# Classnames for our repository
+class_names = ['No Wildfire','Wildfire']
+
 st.set_page_config(page_title='Use Validation Images')
 st.title('Use Validation Images for Prediction')
 
@@ -41,7 +45,7 @@ if st.button(label='Run Prediction',use_container_width=True):
 
                 # The first column will show the image
                 with col1:
-                    st.image(X) #,caption=f'Ground Truth: {}')
+                    st.image(X ,caption=f'Ground Truth: {class_names[y]}')
 
                 # The second column will show a if the predicted class matches with the ground truth
                 with col2:
