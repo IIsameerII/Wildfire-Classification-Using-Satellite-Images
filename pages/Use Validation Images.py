@@ -45,7 +45,7 @@ if st.button(label='Run Prediction',use_container_width=True):
 
                 # The first column will show the image
                 with col1:
-                    st.image(X ,caption=f'Ground Truth: {class_names[y]}')
+                    st.image(X ,caption=f'Ground Truth: {class_names[y]} | Predicted Class: {pred_class[0]}')
 
                 # The second column will show a if the predicted class matches with the ground truth
                 with col2:
