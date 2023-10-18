@@ -52,9 +52,9 @@ if st.button(label='Run Prediction',use_container_width=True):
                 # The second column will show a if the predicted class matches with the ground truth
                 with col2:
                     if pred_class[1] == True:
-                        st.success(f'Predicted Class: "{pred_class[0]}" is True!')
+                        st.success(f'Predicted Class: "{pred_class[0]}" is True ✅! ')
                     else:
-                        st.error(f'Predicted Class: "{pred_class[0]}" is False.')
+                        st.error(f'Predicted Class: "{pred_class[0]}" is False ❌.')
             
             
             
