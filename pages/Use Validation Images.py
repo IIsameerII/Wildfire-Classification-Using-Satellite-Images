@@ -31,6 +31,8 @@ if st.button(label='Run Prediction',use_container_width=True):
     with st.spinner("Prediction Running...Please Wait.."):
 
         for image in range(0,num_images):
+            
+            st.markdown("""---""")
             # Select an image and its corresponding label randomly using random indexing
             rand_idx = torch.randint(low=0,high=len(valid_dataset),size=[1,1]).item()
             X,y = valid_dataset[rand_idx]
